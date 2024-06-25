@@ -27,7 +27,7 @@ Once you have everything ready, run
 npm run start
 ```
 
-This will start generating the frames as individual pictures in the frames folder. This may time quite some time depending on how powerful your computer is. The video generation time seems to be somewhat in line with other video rendering programs though, but that can vary quite a bit.
+This will start generating the frames as individual pictures in the frames folder. This may take quite some time depending on how powerful your computer is. The video generation time seems to be somewhat in line with other video rendering programs though, but that can vary quite a bit.
 
 When complete, a video.mp4 file will be created in the output folder.
 
