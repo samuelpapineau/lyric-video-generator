@@ -8,7 +8,7 @@ https://github.com/samuelpapineau/lyric-video-generator/assets/71904015/47a49e34
 
 # Usage
 
-Generate the media folders
+Start by generating the media folders:
 ```
 npm run setup
 ```
