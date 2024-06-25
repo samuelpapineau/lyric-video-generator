@@ -19,7 +19,6 @@ export function exportVideo(framesPath: string, outputPath: string, absoluteAudi
     return;
   }
 
-  console.log(`Test frame file exists: ${testFramePath}`);
   console.log(`Using frames path: ${absoluteFramesPath}`);
   console.log(`Output path: ${absoluteOutputPath}`);
 

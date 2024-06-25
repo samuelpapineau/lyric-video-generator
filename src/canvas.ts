@@ -1,7 +1,7 @@
-import { createCanvas, registerFont, loadImage } from 'canvas';
 import fs from 'fs';
 import path from 'path';
-
+import { createCanvas, registerFont, loadImage } from 'canvas';
+import { getDurationFromPath } from './utils';
 interface LyricLine {
     time: number; // time in milliseconds
     text: string;
@@ -63,11 +63,13 @@ function renderLyricFrame(context: any, lyric: string, customFont: string, backg
     }
 }
 
-export async function generateFrames(lrcPath: string, audioDuration: number, customFontPath: string, backgroundImagePath: string, outputPath: string, absoluteAudioPath: string, callback: any) {
+export async function generateFrames(lrcPath: string, customFontPath: string, backgroundImagePath: string, outputPath: string, absoluteAudioPath: string, callback: any) {
+    const audioDurationSeconds = Number(await getDurationFromPath(absoluteAudioPath))
+    const audioDuration = Math.ceil(1000 * audioDurationSeconds)
     const lrcContent = fs.readFileSync(lrcPath, 'utf-8');
     const lyrics = parseLRC(lrcContent);
 
-    const frameRate = 15; // 24 frames per second
+    const frameRate = 15; // 15 frames per second
     const fadeDuration = 500; // Fade duration in milliseconds
 
     registerFont(customFontPath, { family: 'Edo SZ' });
