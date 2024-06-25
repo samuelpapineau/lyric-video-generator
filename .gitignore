@@ -132,13 +132,10 @@ dist
 # media files
 
 public/lyrics/*
-!public/lyrics/.gitkeep
 
 public/audio/*
-!public/audio/.gitkeep
 
-public/images
-!public/images/.gitkeep
+public/images/*
 
 frames
 output
