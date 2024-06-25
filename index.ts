@@ -11,7 +11,7 @@ function main(){
     fs.mkdirSync('frames');
   }
 
-  const lrcPath = getPath(path.join(__dirname, './public/fonts'));
+  const lrcPath = getPath(path.join(__dirname, './public/lyrics'));
   const customFontPath = getPath(path.join(__dirname, './public/fonts'));
   const framesOutputPath = path.join(__dirname, './frames');
   const audioDuration = 200000;
