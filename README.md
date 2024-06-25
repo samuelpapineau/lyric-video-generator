@@ -2,6 +2,10 @@
 
 This project allows you to generate a lyric video using nothing but a lyric (.lrc) file, an image, and an audio file.
 
+
+https://github.com/samuelpapineau/lyric-video-generator/assets/71904015/47a49e34-7646-40f8-85cc-5910c869a091
+
+
 # Usage
 
 Generate the media folders
