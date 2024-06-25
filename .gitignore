@@ -130,9 +130,15 @@ dist
 .pnp.*
 
 # media files
-/media
-/audio
-/images
-/frames
-/output
 
+public/lyrics/*
+!public/lyrics/.gitkeep
+
+public/audio/*
+!public/audio/.gitkeep
+
+public/images
+!public/images/.gitkeep
+
+frames
+output
