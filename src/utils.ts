@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-export function getFirstFileInDirectory(directory: string): string | null {
+function getFirstFile(directory: string): string | null {
     try {
         // Read all files in the directory
         const files = fs.readdirSync(directory);
@@ -12,10 +12,15 @@ export function getFirstFileInDirectory(directory: string): string | null {
             return fs.statSync(filePath).isFile();
         });
 
-        // Return the first file or null if no files are found
-        return onlyFiles.length > 0 ? onlyFiles[0] : null;
+        // Return the full path of the first file or null if no files are found
+        return onlyFiles.length > 0 ? path.join(directory, onlyFiles[0]) : null;
     } catch (err) {
         console.error('Error reading directory:', err);
         return null;
     }
+}
+
+export function getPath(directory: string): string | null {
+    const firstFile = getFirstFile(directory);
+    return firstFile ? firstFile : null;
 }

@@ -2,20 +2,45 @@ import fs from 'fs';
 import path from 'path';
 import { exportVideo } from './src/video-exporter'
 import { generateFrames } from './src/canvas'
+import { getPath } from './src/utils'
 import { registerFont } from 'canvas';
 
-registerFont(path.join(__dirname, './public/fonts/edosz.ttf'), { family: 'EdoSZ' });
+function main(){
+  // Create frames directory if it doesn't exist
+  if (!fs.existsSync('frames')) {
+    fs.mkdirSync('frames');
+  }
 
-// Create frames directory if it doesn't exist
-if (!fs.existsSync('frames')) {
-  fs.mkdirSync('frames');
-}
+  const lrcPath = getPath(path.join(__dirname, './public/fonts'));
+  const customFontPath = getPath(path.join(__dirname, './public/fonts'));
+  const framesOutputPath = path.join(__dirname, './frames');
+  const audioDuration = 200000;
+  const absoluteAudioPath = getPath(path.join(__dirname, './public/audio'));
+  const backgroundImagePath = getPath(path.join(__dirname, './public/images'));
 
-const lrcPath = path.join(__dirname, './public/lyrics/faded.lrc');
-const customFontPath = path.join(__dirname, './public/fonts/edosz.ttf');
-const framesOutputPath = path.join(__dirname, './frames');
-const audioDuration = 200000;
-const absoluteAudioPath = path.join(__dirname, './public/audio/faded.mp3');
-const backgroundImagePath = path.join(__dirname, './public/images/image.jpg');
+  //input validation
 
-generateFrames(lrcPath, audioDuration, customFontPath, backgroundImagePath, framesOutputPath, absoluteAudioPath, exportVideo);
+  if (lrcPath == null) {
+    console.log("No lyric file found");
+    return
+  }
+
+  if (customFontPath == null) {
+    console.log("No font file found");
+    return
+  }
+
+  if (absoluteAudioPath == null) {
+    console.log("No audio file found");
+    return
+  }
+
+  if (backgroundImagePath == null) {
+    console.log("No background image file found");
+    return
+  }
+
+  generateFrames(lrcPath, audioDuration, customFontPath, backgroundImagePath, framesOutputPath, absoluteAudioPath, exportVideo);
+  }
+
+main()
